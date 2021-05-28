@@ -28,7 +28,7 @@ class App < Sinatra::Base
     erb :careers_index
   end
 
-  #este es el get para mostrar las carreras con la descripciond de cada una
+  #este es el get para mostrar las carreras con la descripcion de cada una
   get "/careers/:id" do
     career = Career.where(id: params['id']).last
     "<h1> Resumen de la carrera #{career.name}</h1>" +
@@ -72,16 +72,36 @@ class App < Sinatra::Base
     end
   end
 
+   #este es el post para crear las questions
   post "/questions" do
-    data = JSON.parse request.body.read
-    question = Question.new(name: data['name'], description: data['description'], number: data['number'], type: date['type'])
-
-    if question.save
-      [201, { 'location' => "questions/#{question.id}" }, 'CREATED']
-    else
-      [500, {}, 'Internal Server Error']
-    end
+    
+    question = Question.new(params[:question])
+    question.save
+    redirect '/questions'
   end
+
+    #este es el get para mostrar las questions
+  get "/questions" do
+    @questions = Question.all
+
+    erb :questions_index
+  end
+
+  #este es el get para mostrar las questions con la descripciond de cada una
+  get "/questions/:id" do
+    question = Question.where(id: params['id']).last
+    "<h1> Lista de Preguntas #{question.name}</h1>" +
+    "<ul>" +
+    "<li> number: #{question.number}" +
+    "<li> name: #{question.name}" +
+    "<li> description: #{question.description}" +
+    "<li> type: #{question.type}" +
+    "</ul>"
+  end
+
+
+
+
 
   post "/choises" do
     data = JSON.parse request.body.read
