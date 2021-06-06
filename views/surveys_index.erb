@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+          Encuesta
+        </title>
+    </head>
+
+<br />
+<div class="container">
+    <section class="row">
+        <div class="col-md-12">
+            <h1 class="text-center">Encuesta Vocacional</h1>
+              <p> Usuario: <input type="text" name="username" placeholder="Ingresa tu Usuario"> </p>
+        </div>
+    </section>
+    <hr />
+    <br />
+
+    <!--  Preguntas  -->
+    <section class="row">
+        <div class="col-md-12">
+            <h3>Preguntas.</h3>
+            <p></p>
+        </div>
+    </section>
+
+    <!--  PREGUNTA   -->
+    <section class="row">
+        <div class="col-md-12">
+            <% @questions.each do |question| %>
+
+            	<p><%= question.number %>. <%= question.name %></p>
+            		
+
+				<% question.choices.each do |choice| %>
+
+		            <div class="col-md-12">
+			            <label class="radio">		                
+
+			                <input type="radio" name="<%= question.id  %>" id="<%= choice.id  %>" /> <%= choice.text %> 
+
+			        </label>
+		        	</div>
+		        <% end %>
+
+        	<% end %>
+        		
+        </div>
+    </section>
+    <hr />
+    <br />
+        <section class="row">
+      <div class="col-md-12">
+        <button type="button" class="btn btn-info" id="saveForm" onclick="saveForm">Guardar Encuesta</button>
+        <button type="button" class="btn btn-danger" id="clearForm" onclick="cleanForm">Limpiar formulario</button>
+      </div>
+    </section>
+</div>
+  <br /><br />
+  <footer class="container">
+    <p>Todos los derechos reservados para UNRC.</p>
+  </footer>
+</html>
+
+<script>
+function saveForm() {
+
+    const choicesSelected = getChoicesSelected();
+
+    makeRequest('POST', '/surveys_ending', choicesSelected);
+}
+
+function getChoicesSelected() {
+    const inputsInHTML = document.getElementsByTagName('input');
+
+    const inputsInHTMLInArray = Array.prototype.slice.call(inputsInHTML, 0);
+
+    const choicesSelectedInHTML = inputsInHTMLInArray.filter(inputInHTML => inputInHTML.checked);
+
+    return choicesSelectedInHTML.map(choiceInHTML => ({
+        ...choiceInHTML.dataset
+    }));
+}
+
+function makeRequest(method, action, params) {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open(method, action);
+
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.send(JSON.stringify(params));
+}
+</script>

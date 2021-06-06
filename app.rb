@@ -39,16 +39,21 @@ class App < Sinatra::Base
     "</ul>"
   end
 
-  post "/surveys" do
-    data = JSON.parse request.body.read
-    survey = Survey.new(username: data['username'], career_id: data['career_id'])
-
-    if survey.save
-      [201, { 'location' => "surveys/#{survey.id}" }, 'CREATED']
-    else
-      [500, {}, 'Internal Server Error']
-    end
+ post "/begin" do
+    redirect '/surveys'
   end
+
+  post "/surveys" do
+    survey = Survey.new(username: params[:username])
+    survey.save
+  end
+
+      #este es el get para mostrar las surveys
+  get "/surveys" do
+    @questions = Question.all
+    erb :surveys_index
+  end
+
 
   post "/responses" do
     data = JSON.parse request.body.read
