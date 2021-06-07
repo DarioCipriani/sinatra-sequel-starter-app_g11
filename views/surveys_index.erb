@@ -67,30 +67,8 @@
 <script>
 function saveForm() {
 
-    const choicesSelected = getChoicesSelected();
-
-    makeRequest('POST', '/surveys_ending', choicesSelected);
+   
 }
 
-function getChoicesSelected() {
-    const inputsInHTML = document.getElementsByTagName('input');
 
-    const inputsInHTMLInArray = Array.prototype.slice.call(inputsInHTML, 0);
-
-    const choicesSelectedInHTML = inputsInHTMLInArray.filter(inputInHTML => inputInHTML.checked);
-
-    return choicesSelectedInHTML.map(choiceInHTML => ({
-        ...choiceInHTML.dataset
-    }));
-}
-
-function makeRequest(method, action, params) {
-    const xhr = new XMLHttpRequest();
-
-    xhr.open(method, action);
-
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    xhr.send(JSON.stringify(params));
-}
 </script>
