@@ -1,29 +1,90 @@
 <!DOCTYPE html>
   <HTML>
     <head>
-      <title>Test Vocacional</title>
-      <div class="formHeader" color="talkColor">
-    <div class="navArrow2" name="md-arrow-round-back" align="center"> </div>
-    <div class="tituloTab" align="center"><h1>Te gustaria hacer un test vocacional?</h1></div>
-</div>
+    <link rel="icon" href=https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg type="image/png"/>
+    <!--Fuentes-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: #ffffff;
+      }
+      footer{
+        background: #2f5d62;
+        color: #a7c4bc;
+        height: 40px;
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      footer p{
+        margin: 0px
+      }
+      .titulo { 
+        color: #5e8b7e ; 
+        text-shadow: 3px 3px 6px #dfeeea;
+        font-size: 5.1vh;
+        text-align: center;
+      } 
+      .titulo h1{
+        margin: 5px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+      .cuerpo{
+        display: flex;
+        flex-direction: row;
+        justify-content: center ;
+        align-items: center ;
+        margin-top: 0px
+      }
+      .texto{
+        font-size: 5vh;
+        width: 50% ;
+        padding: 10px;
+        margin-top: 10px ;
+        color: #2f5d62 ;
+        text-align: center
+      }
+      .buttom{
+        width: 200px;
+        height: 50px;
+        border-radius: 12px;
+        background: #2f5d62;
+        color: #dfeeea ;
+        font-size: 3vh;
+      }
+    </style>
+    <title> Test vocacional</title>
+    <div class="titulo">
+      <h1>¿Te gustaria hacer un test vocacional?</h1>
+      <hr>
+    </div>
     </head>
     <body>
-      <div>
-        <p>Para elegir una carrera o estudio es necesario conocer o reconocer
-        para qué somos hábiles y qué cosas nos interesan o atraen. Ese es
-        un primer paso para luego pasar a la etapa de información y abordar
-        el mundo de las carreras y profesiones.</p>
-        <p>Para ayudarte a aclarar el panorama, te proponemos:</p>
-        <h3> HACÉ NUESTRO TEST VOCACIONAL</h3>
-	    <form action='/begin' method='POST'>
-
-  <p>
-
-    <input type="submit" value="Iniciar Encuesta">
-
-  </p>
-
-</form>
+      <div class="cuerpo">
+        <img src=https://image.freepik.com/vector-gratis/personas-enfocadas-que-estudian-escuela-linea_74855-5834.jpg>
+        <div class="texto">
+          <p>Para elegir una carrera es necesario conocer o reconocer
+            para qué somos hábiles y qué cosas nos interesan. 
+            Ese es un primer paso para luego pasar a la etapa de información y abordar
+            el mundo de las carreras y profesiones.</p>
+          <p> Para ayudarte a aclarar el panorama, te proponemos
+            <strong> hacer nuestro test vocacional </strong>
+          </p>
+          <form action='/begin' method='POST'>
+          <p >
+            <input class= buttom type="submit" value="Iniciar Encuesta">
+          </p>
+          </form>
+        </div>
       </div>
+      <footer>
+        <p> Analisis y Diseño de Sistemas 2021 - Dario Cipriani & Maria Jose Gabutti</p>
+      </footer>
     </body>  
   </HTML>

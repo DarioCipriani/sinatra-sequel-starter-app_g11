@@ -1,10 +1,11 @@
 #Limpiar base de datos
 Survey.all.map { |s| s.destroy }
+Outcome.all.map { |o| o.destroy }
 Career.all.map { |c| c.destroy }
 Choice.all.map { |ch| ch.destroy }
 Question.all.map { |q| q.destroy }
 Response.all.map { |r| r.destroy }
-Outcome.all.map { |o| o.destroy }
+
 
 
 # crear carreras
@@ -84,8 +85,48 @@ ch32 = Choice.create(text:'4. El uso de la PC como herramienta para el control d
 ch33 = Choice.create(text:'5. Procesos productivos de una empresa.', question_id:q14.id)
 ch34 = Choice.create(text:'6. Ninguna de las opciones.', question_id:q14.id)
 ch35 = Choice.create(text:'1. Director de una investigación técnico científica', question_id:q15.id)
-ch35 = Choice.create(text:'2. Gerente general de una empresa reconocida por su responsabilidad social.', question_id:q15.id)
-ch35 = Choice.create(text:'3. Un deportista famoso por su destreza física y su ética profesional.', question_id:q15.id)
-ch35 = Choice.create(text:'4. Experto en la detección precoz de enfermedades neurológicas en niños.', question_id:q15.id)
-ch35 = Choice.create(text:'5. Un agente de prensa audaz, número uno en el ranking de notas a celebridades.', question_id:q15.id)
-ch35 = Choice.create(text:'6. Ninguna de las opciones.', question_id:q15.id)
+ch36 = Choice.create(text:'2. Gerente general de una empresa reconocida por su responsabilidad social.', question_id:q15.id)
+ch37 = Choice.create(text:'3. Un deportista famoso por su destreza física y su ética profesional.', question_id:q15.id)
+ch38 = Choice.create(text:'4. Experto en la detección precoz de enfermedades neurológicas en niños.', question_id:q15.id)
+ch39 = Choice.create(text:'5. Un agente de prensa audaz, número uno en el ranking de notas a celebridades.', question_id:q15.id)
+ch40 = Choice.create(text:'6. Ninguna de las opciones.', question_id:q15.id)
+
+
+# crear Outcome
+o1 = Outcome.create(choice_id:ch1.id, career_id:c1.id)
+o2 = Outcome.create(choice_id:ch1.id, career_id:c17.id)
+o3 = Outcome.create(choice_id:ch3.id, career_id:c8.id)
+o4 = Outcome.create(choice_id:ch3.id, career_id:c12.id)
+o5 = Outcome.create(choice_id:ch3.id, career_id:c15.id)
+o6 = Outcome.create(choice_id:ch3.id, career_id:c4.id)
+o7 = Outcome.create(choice_id:ch5.id, career_id:c11.id)
+o8 = Outcome.create(choice_id:ch5.id, career_id:c10.id)
+o9 = Outcome.create(choice_id:ch7.id, career_id:c8.id)
+o10 = Outcome.create(choice_id:ch9.id, career_id:c4.id)
+o11 = Outcome.create(choice_id:ch11.id, career_id:c3.id)
+o12 = Outcome.create(choice_id:ch13.id, career_id:c10.id)
+o13 = Outcome.create(choice_id:ch15.id, career_id:c11.id)
+o14 = Outcome.create(choice_id:ch15.id, career_id:c10.id)
+o15 = Outcome.create(choice_id:ch17.id, career_id:c5.id)
+o16 = Outcome.create(choice_id:ch19.id, career_id:c7.id)
+o17 = Outcome.create(choice_id:ch19.id, career_id:c10.id)
+o18 = Outcome.create(choice_id:ch21.id, career_id:c13.id)
+o19 = Outcome.create(choice_id:ch23.id, career_id:c4.id)
+o20 = Outcome.create(choice_id:ch23.id, career_id:c2.id)
+o21 = Outcome.create(choice_id:ch25.id, career_id:c16.id)
+o22 = Outcome.create(choice_id:ch26.id, career_id:c10.id)
+o23 = Outcome.create(choice_id:ch27.id, career_id:c4.id)
+o24 = Outcome.create(choice_id:ch27.id, career_id:c9.id)
+o25 = Outcome.create(choice_id:ch29.id, career_id:c8.id)
+o26 = Outcome.create(choice_id:ch30.id, career_id:c7.id)
+o27 = Outcome.create(choice_id:ch30.id, career_id:c10.id)
+o28 = Outcome.create(choice_id:ch31.id, career_id:c17.id)
+o29 = Outcome.create(choice_id:ch32.id, career_id:c4.id)
+o30 = Outcome.create(choice_id:ch33.id, career_id:c5.id)
+o31 = Outcome.create(choice_id:ch35.id, career_id:c8.id)
+o32 = Outcome.create(choice_id:ch35.id, career_id:c15.id)
+o33 = Outcome.create(choice_id:ch35.id, career_id:c4.id)
+o34 = Outcome.create(choice_id:ch36.id, career_id:c5.id)
+o35 = Outcome.create(choice_id:ch37.id, career_id:c8.id)
+o36 = Outcome.create(choice_id:ch38.id, career_id:c13.id)
+o37 = Outcome.create(choice_id:ch39.id, career_id:c14.id)

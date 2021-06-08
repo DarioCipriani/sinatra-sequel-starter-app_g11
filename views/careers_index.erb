@@ -1,15 +1,105 @@
-<h1>LAS CARRERAS EXISTENTES SON:</h1>
-
-<form action='/careers' method='POST'>
-	<input type='text' name='name' placeholder= 'Nombre de la Carrera'>
-	<input type='submit' value='Crear'>
-</form>
-
-<ul>
-	<% @careers.map do |career| %>
-		<li>
-	<a href="careers/<%=career.id%>"> <%= career.name %></a>
-			(<%= career.surveys.count.to_s %>)
-		</li>
-	<% end %>
-</ul> 
+<head>
+    <link rel="icon" href=https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg type="image/png"/>
+    <!--Fuentes-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <style>
+		body {
+			font-family: 'Roboto', sans-serif;
+			background: #ffffff;
+		}
+		footer{
+			background: #2f5d62;
+			color: #a7c4bc;
+			height: 40px;
+			margin: 0px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		footer p{
+			margin: 0px
+		}
+		.titulo { 
+			color: #5e8b7e ; 
+			text-shadow: 3px 3px 6px #dfeeea;
+			font-size: 5.1vh;
+		} 
+		.titulo h3{
+			margin: 15px;
+			padding-top: 15px;
+			padding-bottom: 15px;
+		}
+		.col-2{
+			margin: 5px;
+			padding-top: 15px;
+			padding-bottom: 15px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.col-1{
+			font-size: 3vh;
+			color: #2f5d62;
+		}
+		ul{
+			margin-left:40px
+		}
+		li a{
+			text-decoration: none;
+			color: #2f5d62;
+			font-size: 4vh;
+			
+		}
+		.buttom{
+			width: 160px;
+			height: 50px;
+			border-radius: 12px;
+			background: #2f5d62;
+			color: #dfeeea ;
+			font-size: 3vh;
+		}
+		.input{
+			width: 350px;
+			height: 50px;
+			border-radius: 12px;
+			color: #dfeeea ;
+			font-size: 3vh;
+			text-align: center
+		}
+		.cuerpo{
+			display: flex;
+			flex-direction: row;
+			justify-content: space-around;
+			align-items: flex-start;
+			margin-top: 0px
+		}
+    </style>
+</head>
+<body>
+	<div class="cuerpo">
+		<div class="col-1">
+			<div class="titulo">
+				<h3>Las carreras existentes son:</h3>
+			</div>
+			<ul>
+				<% @careers.map do |career| %>
+					<li>
+						<a href="careers/<%=career.id%>"> <%= career.name %></a>
+						(<%= career.surveys.count.to_s %>)
+					</li>
+				<% end %>
+			</ul> 
+		</div>
+		<div class="col-2">			
+			<img src=https://image.freepik.com/vector-gratis/pequenos-estudiantes-que-aprenden-lecciones-linea-traves-ilustracion-plana-computadora-portatil-gente-dibujos-animados-escuchando-seminario-web-computadora-o-conferencia-universitaria-video_74855-14179.jpg>
+			<form action='/careers' method='POST'>
+				<input class=input type='text' name='name' placeholder= 'Nombre de la Carrera'>
+				<input class=buttom  type='submit' value='Crear'>
+			</form>
+		</div>
+	</div>
+</body>
