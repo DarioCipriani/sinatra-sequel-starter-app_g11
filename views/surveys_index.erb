@@ -1,76 +1,147 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <title>
-          Encuesta
-        </title>
-    </head>
-
-<br />
-<div class="container">
-    <section class="row">
-        <div class="col-md-12">
-            <h1 class="text-center">Encuesta Vocacional</h1>
-              <p> Usuario: <input type="text" name="username" placeholder="Ingresa tu Usuario" required="true"> </p>
-        </div>
-    </section>
-    <hr />
-    <br />
-
-    <!--  Preguntas  -->
-    <section class="row">
-        <div class="col-md-12">
-            <h3>Preguntas.</h3>
-            <p></p>
-        </div>
-    </section>
-
-    <!--  PREGUNTA   -->
-    <section class="row">
-        <div class="col-md-12">
-            <% @questions.each do |question| %>
-
-            	<p><%= question.number %>. <%= question.name %></p>
-            		
-
-				<% question.choices.each do |choice| %>
-
-		            <div class="col-md-12">
-			            <label class="radio">		                
-
-			                <input type="radio" name="<%= question.id  %>" id="<%= choice.id  %>" /> <%= choice.text %> 
-
-			        </label>
-		        	</div>
-		        <% end %>
-
-        	<% end %>
-        		
-        </div>
-    </section>
-    <hr />
-    <br />
-        <section class="row">
-      <div class="col-md-12">
-        <button type="button" class="btn btn-info" id="saveForm" onclick="saveForm">Guardar Encuesta</button>
-        <button type="button" class="btn btn-danger" id="clearForm" onclick="cleanForm">Limpiar formulario</button>
+  <head>
+    <link rel="icon" href=https://upload.wikimedia.org/wikipedia/commons/7/73/Ruby_logo.svg type="image/png"/>
+    <!--Fuentes-->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <title> Encuestas </title>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: #ffffff;
+      }
+      .titulo { 
+        color: #5e8b7e ; 
+        text-shadow: 3px 3px 6px #dfeeea;
+        font-size: 7.1vh;
+        margin-left: 40px;
+        margin-bottom: 0px;
+      }
+      .subtitulo { 
+        color: #5e8b7e ; 
+        text-shadow: 3px 3px 6px #dfeeea;
+        font-size: 4.5vh;
+        margin-left: 40px;
+        margin-bottom: 0px;
+      }
+      .col-2{
+        margin: 5px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .col-1{
+        font-size: 4vh;
+        color: #2f5d62;
+      }
+      ul{
+        margin-left:40px
+      }
+      li a{
+        text-decoration: none;
+        color: #2f5d62;
+        font-size: 5vh;
+        
+      }
+      .buttom{
+        width: 160px;
+        height: 50px;
+        border-radius: 12px;
+        background: #2f5d62;
+        color: #dfeeea ;
+        font-size: 2vh;
+        margin-left: 80px;
+      }
+      .input{
+        width: 320px;
+        height: 40px;
+        border-radius: 12px;
+        color: #2f5d62 ;
+        font-size: 3vh;
+        text-align: center
+      }
+      .cuerpo{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+        margin-top: 0px
+      }
+      .head{
+        background:#dfeeea
+      }
+      #preguntas{
+        margin-left:40px;
+      }
+    </style>
+    <title>
+      Encuesta
+    </title>
+</head>
+<body class=head>
+  <div class="container">
+      <section class="row">
+          <div >
+              <h1 class="titulo" >Encuesta Vocacional</h1>
+              <hr />
+              <h3 class="subtitulo"> Usuario: <input class="input" type="text" name="username" placeholder="Ingresa tu Usuario"> </h3>
+              <br />  
       </div>
-    </section>
-</div>
-  <br /><br />
-  <footer class="container">
-    <p>Todos los derechos reservados para UNRC.</p>
-  </footer>
-</html>
+      </section>
+      
 
-<script>
-function saveForm() {
+      <!--  Preguntas  -->
+      <section class="row">
+          <div class="subtitulo">
+            <p>Preguntas.</p>
+            <p></p>
+          </div>
+      </section>
 
-	//crear un survey
+      <!--  PREGUNTA   -->
+      <section class="row" id="preguntas">
+          <div class="col-md-12">
+              <% @questions.each do |question| %>
+                <p ><%= question.number %>. <%= question.name %></p>
+          <% question.choices.each do |choice| %>
+                  <div class="col-md-12">
+                    <label class="radio">		                
+                        <input type="radio" name="<%= question.id  %>" id="<%= choice.id  %>" /> <%= choice.text %> 
+                </label>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+      </section>
+      <hr />
+      <br />
+          <section class="row">
+        <div class="col-md-12">
+          <button class=buttom type="button" class="btn btn-info" id="saveForm" onclick="saveForm">Guardar Encuesta</button>
+        </div>
+      </section>
+  </div>
+    <br /><br />
+    <footer class="container">
+      <p>Todos los derechos reservados para UNRC.</p>
+    </footer>
+  </html>
+
+  <script>
+  function saveForm() {
+
+    
+  }
 
    
 }
 
-
-</script>
+  </script>
+</body>
