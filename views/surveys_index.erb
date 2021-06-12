@@ -87,11 +87,12 @@
 </head>
 <body class=head>
   <div class="container">
+  <form>
       <section class="row">
           <div >
               <h1 class="titulo" >Encuesta Vocacional</h1>
               <hr />
-              <h3 class="subtitulo"> Usuario: <input class="input" type="text" name="username" placeholder="Ingresa tu Usuario"> </h3>
+              <h3 class="subtitulo"> Usuario: <input class="input" type="text" id="username" placeholder="Ingresa tu Usuario"> </h3>
               <br />  
       </div>
       </section>
@@ -107,13 +108,23 @@
 
       <!--  PREGUNTA   -->
       <section class="row" id="preguntas">
-          <div class="col-md-12">
+        <div class="col-md-12">
+          
               <% @questions.each do |question| %>
-                <p ><%= question.number %>. <%= question.name %></p>
-          <% question.choices.each do |choice| %>
-                  <div class="col-md-12">
-                    <label class="radio">		                
-                        <input type="radio" name="<%= question.id  %>" id="<%= choice.id  %>" /> <%= choice.text %> 
+              <p><%= question.number %>. <%= question.name %></p>
+                    
+              <% question.choices.each do |choice| %>
+              <div class="col-md-12">
+                <label class="radio">		                
+                  <input 
+                    type="radio" 
+                    name="<%= question.id  %>" 
+                    data-choice-id="<%= choice.id %>"
+                    data-choice-text="<%= choice.text %>"
+                    data-question-id="<%= question.id %>"
+                    data-question-name="<%= question.name %>"
+                  /> <%= choice.text %> 
+                    </div>
                 </label>
                 </div>
               <% end %>
@@ -122,11 +133,12 @@
       </section>
       <hr />
       <br />
-          <section class="row">
+      <section class="row">
         <div class="col-md-12">
-          <button class=buttom type="button" class="btn btn-info" id="saveForm" onclick="saveForm">Guardar Encuesta</button>
+          <button class=buttom type="button" class="btn btn-info" id="saveForm" onclick="savedForm()">Guardar Encuesta</button>
         </div>
       </section>
+      </form>
   </div>
     <br /><br />
     <footer class="container">
@@ -135,13 +147,45 @@
   </html>
 
   <script>
-  function saveForm() {
-
-    
-  }
-
-   
+  
+  function getUsername() {
+    console.log(document.getElementById('username').value)
+    return document.getElementById('username').value;
 }
 
-  </script>
+  function savedForm() {
+    const inputsInHTML = document.getElementsByTagName('input');
+    const inputsInHTMLInArray = Array.prototype.slice.call(inputsInHTML, 0);
+    const choicesSelectedInHTML = inputsInHTMLInArray.filter(inputInHTML => inputInHTML.checked);
+    const choicesSelected =choicesSelectedInHTML.map(choiceInHTML => ({
+      ...choiceInHTML.dataset
+    })) ;
+    const formComplete={ username:getUsername() , choices:choicesSelected}
+    console.log(formComplete.choices.length)
+    if (!formComplete || !formComplete.username || formComplete.username.length===0 ){
+      
+      return alert("El campo de usuario es obligatorio.")
+
+    }
+    if (formComplete.choices.length !== 15 ) {
+      return alert("Asegurese de haber respondido todas las preguntas antes de continuar.")
+    } else {
+      
+      //crear un registro Survey con el usuario en la BD
+      //crear response en la BD con los datos de choicesSelected----> tiene todas las respuestas de las preguntas de la encuesta
+      //hacer un for sobre los response comparando con los outcome y guardar en un arreglo de carreras y cantidad la puntuacion que corresponda
+      //luego recorrer ese arreglo de carrera y devolver la carrera que mas cantidad/peso tenga
+      //guardar en BD el career_id en el surveys que creamos anteriormente
+      //mostrar el resultado redirigiendo a una pagina (finish_survey) con el nombre del usuario y el nombre de la carrera
+
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/finish_survey');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify(formComplete));
+
+    }    
+}
+
+</script>
 </body>

@@ -43,10 +43,50 @@ class App < Sinatra::Base
     redirect '/surveys'
   end
 
-  post "/surveys" do
-    survey = Survey.new(username: params[:username])
-    survey.save
+  post "/finish_survey" do
+    data = JSON.parse request.body.read
+    @username = data['username']
+    @survey = Survey.new(username: @username)
+    @survey.save
+    createResponses(data['choices'],@survey.id)
+    response = Response.all
+
+
+    result = {}
+    ##inicializando arreglo de carreras y pesos
+    for career in Career.all
+      result[career.id] = 0
+    end
+
+    response.each do |response|
+      o = Outcome.where(choice_id: response.choice_id).last
+      if(o && o.career_id)
+        result[o.career_id] = result[o.career_id] + 1
+      end
+    end
+
+    resultCareer = result.key(result.values.max)
+    @career = Career.find(id: resultCareer)
+
+    @survey.update(career_id: @career.id)
+    
+    erb :finish_index
+
   end
+
+  get '/finish_survey' do
+    @survey = params[:survey]
+
+    @career = params[:career]
+
+    erb :finish_index
+  end
+
+    def createResponses(data, survey_id)
+      data.each do |data|
+        Response.create(choice_id: data['choiceId'], question_id: data['questionId'], survey_id: survey_id)
+      end
+    end
 
       #este es el get para mostrar las surveys
   get "/surveys" do

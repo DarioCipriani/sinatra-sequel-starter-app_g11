@@ -29,7 +29,7 @@ c17 = Career.create(name:'Veterinaria', full_description:'')
 
 
 # crear surveys
-Survey.create(username:'Pepito', career_id:c1.id)
+#Survey.create(username:'Pepito', career_id:c1.id)
 
 # crear preguntas
 q1 = Question.create(name:'Me trasladaría a una zona agrícola - ganadera para ejercer mi profesión.', number:1, type:'radio', description:'1')
