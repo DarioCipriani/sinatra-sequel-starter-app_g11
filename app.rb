@@ -45,42 +45,46 @@ class App < Sinatra::Base
 
   post "/finish_survey" do
     data = JSON.parse request.body.read
+    # obtengo valor del usuario
     @username = data['username']
+    # creo la encuesta con el usuario
     @survey = Survey.new(username: @username)
     @survey.save
+    #guardo las respuestas del usuario
     createResponses(data['choices'],@survey.id)
     response = Response.all
 
-
+    # creo el arreglo de carreras que contendra los pesos
     result = {}
-    ##inicializando arreglo de carreras y pesos
+    ## inicializando arreglo de carreras y pesos
     for career in Career.all
       result[career.id] = 0
     end
-
+    # Por cada respuesta reviso en outcome con que carrera machea 
+    # y al arreglo de carreras incremento el peso de esa carrera en 1
     response.each do |response|
       o = Outcome.where(choice_id: response.choice_id).last
       if(o && o.career_id)
         result[o.career_id] = result[o.career_id] + 1
       end
     end
-
+    # Obtengo el maximo del arreglo de carreras
     resultCareer = result.key(result.values.max)
+    #busco ese id de carreras en la tabla de carrera y se lo asigno a una variable
     @career = Career.find(id: resultCareer)
-
+    # actualizo el valor del registro de la encuesta con la carrera que gano
     @survey.update(career_id: @career.id)
-    
-    erb :finish_index
-
+    #llamo a la pagina html que me muestra la carrera ganadora
+     redirect to "/finish/#{@survey.id}"
   end
 
-  get '/finish_survey' do
-    @survey = params[:survey]
+ get '/finish/:id' do
+    @survey = Survey.find(id: params[:id])
 
-    @career = params[:career]
+   @career = Career.find(id: @survey.career_id)
 
-    erb :finish_index
-  end
+   erb :finish
+end
 
     def createResponses(data, survey_id)
       data.each do |data|
