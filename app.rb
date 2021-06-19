@@ -47,6 +47,17 @@ class App < Sinatra::Base
     data = JSON.parse request.body.read
     # obtengo valor del usuario
     @username = data['username']
+    # si existe alguna encuesta asociada a ese usuario la borramos
+    oldSurvey=Survey.where(username: @username)
+
+    oldSurvey.each do |survey|
+      oldResponse = Response.where(survey_id: survey.id)
+      oldResponse.destroy
+    end
+
+    oldSurvey.each do |survey|
+      survey.destroy
+    end
     # creo la encuesta con el usuario
     @survey = Survey.new(username: @username)
     @survey.save
