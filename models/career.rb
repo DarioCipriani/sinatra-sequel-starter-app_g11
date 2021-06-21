@@ -4,5 +4,6 @@ class Career < Sequel::Model
 	def validate
     	super
    		errors.add(:name, 'cannot be empty') if !name || name.empty?
+   		validates_unique :name
   	end
 end
