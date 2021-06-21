@@ -77,8 +77,24 @@
       .head{
         background:#dfeeea
       }
-      #preguntas{
+      .preguntas{
         margin-left:40px;
+      }
+      .img {
+        width:35px;
+        height:35px;
+        margin-right: 40px;
+      }
+      .navBar{
+        display:flex;
+        flex-direction:row;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      button{
+        border: none;
+        background: #dfeeea;
+        cursor: pointer;
       }
     </style>
     <title>
@@ -89,12 +105,15 @@
   <div class="container">
   <form>
       <section class="row">
-          <div >
+          <div class="navBar">
               <h1 class="titulo" >Encuesta Vocacional</h1>
+              <a href="/">
+                <img href="/" class="img" src='https://image.flaticon.com/icons/png/512/15/15766.png'>
+              </a>
+          </div>
               <hr />
               <h3 class="subtitulo"> Usuario: <input class="input" type="text" id="username" placeholder="Ingresa tu Usuario"> </h3>
               <br />  
-      </div>
       </section>
       
 
@@ -107,14 +126,14 @@
       </section>
 
       <!--  PREGUNTA   -->
-      <section class="row" id="preguntas">
+      <section class="row">
         <div class="col-md-12">
           
               <% @questions.each do |question| %>
-              <p><%= question.number %>. <%= question.name %></p>
+              <p class="preguntas"><%= question.number %>. <%= question.name %></p>
                     
               <% question.choices.each do |choice| %>
-              <div class="col-md-12">
+              <div class="preguntas">
                 <label class="radio">		                
                   <input 
                     type="radio" 
@@ -147,7 +166,9 @@
   </html>
 
   <script>
-  
+  function redirect(){
+   return window.location.href="http://localhost:9292/career";
+  }
   function getUsername() {
     console.log(document.getElementById('username').value)
     return document.getElementById('username').value;

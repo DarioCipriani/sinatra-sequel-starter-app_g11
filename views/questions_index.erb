@@ -40,8 +40,8 @@
 			padding-bottom: 15px;
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
-			align-items: center;
+			justify-content: flex-end;
+			align-items: flex-end;
 		}
 		.col-1{
 			font-size: 4vh;
@@ -87,11 +87,33 @@
 			align-items: center;
 			
 		}
+		.img {
+        width:35px;
+        height:35px;
+        margin-right: 40px;
+      }
+      .navBar{
+        display:flex;
+        flex-direction:row;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      button{
+        border: none;
+        background: #ffffff;
+        cursor: pointer;
+      }
+	  .boton{
+		display:flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+		width: 20px
+	  }
     </style>
 </head>
 
 <body>
-	<div class="cuerpo">
+		<div class="cuerpo">
 		<div class="col-1">
 			<div class="titulo">
 				<h3>Las preguntas existentes son:</h3>
@@ -105,6 +127,11 @@
 			</ul> 
 		</div>
 		<div class="col-2">	
+			<div class="boton">
+				<a href="/">
+					<img href="/" class="img" src='https://image.flaticon.com/icons/png/512/15/15766.png'>
+				</a>
+			</div>
 			<img src=https://image.freepik.com/vector-gratis/pequena-empresaria-comprobando-tareas-completadas-ilustracion-plana-portapapeles_74855-15535.jpg>
 			<form action='/questions' method='POST'>
 				<input class=input type='text' name='question[name]' placeholder= 'Pregunta'>

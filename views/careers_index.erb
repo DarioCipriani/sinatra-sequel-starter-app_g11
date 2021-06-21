@@ -39,8 +39,8 @@
 			padding-bottom: 15px;
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
-			align-items: center;
+			justify-content: flex-end;
+			align-items: flex-end;
 		}
 		.col-1{
 			font-size: 3vh;
@@ -78,6 +78,28 @@
 			align-items: flex-start;
 			margin-top: 0px
 		}
+		.img {
+        width:35px;
+        height:35px;
+        margin-right: 40px;
+      }
+		.navBar{
+        display:flex;
+        flex-direction:row;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      button{
+        border: none;
+        background: #ffffff;
+        cursor: pointer;
+      }
+	  .boton{
+		display:flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+		width: 20px
+	  }
     </style>
 </head>
 <body>
@@ -95,7 +117,12 @@
 				<% end %>
 			</ul> 
 		</div>
-		<div class="col-2">			
+		<div class="col-2">		
+			<div class="boton">
+				<a href="/">
+					<img href="/" class="img" src='https://image.flaticon.com/icons/png/512/15/15766.png'>
+				</a>
+			</div>
 			<img src=https://image.freepik.com/vector-gratis/pequenos-estudiantes-que-aprenden-lecciones-linea-traves-ilustracion-plana-computadora-portatil-gente-dibujos-animados-escuchando-seminario-web-computadora-o-conferencia-universitaria-video_74855-14179.jpg>
 			<form action='/careers' method='POST'>
 				<input class=input type='text' name='name' placeholder= 'Nombre de la Carrera'>
