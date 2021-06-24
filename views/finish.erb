@@ -24,9 +24,8 @@
 			margin: 0px
 		}
 		.titulo { 
-			color: #5e8b7e ; 
-			text-shadow: 3px 3px 6px #dfeeea;
-			font-size: 5.1vh;
+			color: #f2f2f6; 
+			font-size: 4.1vh;
 		} 
 		.titulo h3{
 			margin: 15px;
@@ -79,18 +78,19 @@
 			margin-top: 0px
 		}
 		h3{
+			color: #f2f2f6;
+			font-size: 8vh;
 			text-align: center;
+			margin: 5px;
+			text-shadow: 2px 2px 4px #dfeeea;
+
 		}
 		.img {
         width:35px;
         height:35px;
-        margin-right: 40px;
-      }
-      .navBar{
-        display:flex;
-        flex-direction:row;
-        justify-content: space-between;
-        align-items: flex-end;
+		display:flex;
+        justify-content: center;
+        align-items: center;
       }
       button{
         border: none;
@@ -101,35 +101,89 @@
 		display:flex;
         justify-content: flex-end;
         align-items: flex-end;
-		width: 20px
+		
 	  }
+	  .botonera {
+		width: 80px;
+		display:flex;
+		flex-direction: column;
+        justify-content: center;
+        align-items: center;
+		align-text: center;
+		color: black;
+		text-decoration: none;
+	  }
+	  p{
+		margin: 0px;
+		padding: 0px;
+		text-align: center;
+	  }
+	  .card{
+		width: 80%;
+		border: 5px solid #5e8b7e;
+		border-radius: 10px;
+		display: flex;
+		margin-left: 10%;
+		margin-top: 5%;
+		height: 70%;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+	  }
+	  .login{
+		width: 80%;
+	  }
+	  .izq{
+		border-radius: 10px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		width: 50%;
+		height: 100%;
+		background: #f2f2f6 ;
+	  }
+	  .der{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 50%;
+		height: 100%;
+		background: #5e8b7e;
+	  }
+	  .description{
+		margin: 10px;
+		padding: 10px;
+		text-align: center;
+		width: 70%;
+	  	font-size: 4vh;
+		color: #dfeeea;
+		}
     </style>
 </head>
 <body>
-	<div class="cuerpo">
-		<div class="col-1">
-			<div class="titulo">
-				<h3> <%= @survey.username %> <br></br>La orientacion ganadora fue:</h3>
-				<h3> <%= @career.name %> <br> </h3>
-			</div>
-			<div class="cuerpo">
-			<ul>
-				<li> <h2> Si desea ver la lista de carreras disponibles haga <a href="/careers"> clic aqui </a> </h2> </li>
-				<li> <h2> Si desea volver a realizar la encuesta haga <a href="/"> clic aqui </a> </h2> </li>
-			</ul>
+	<header>
+		<div class="boton">	
+			<a href="/careers" class="botonera">
+				<img href="/" class="img" src='https://image.flaticon.com/icons/png/512/999/999735.png'>
+				<p>Carreras </p>
+			</a>
+			<a href="/" class="botonera">
+				<img href="/" class="img" src='https://image.flaticon.com/icons/png/512/15/15766.png'>
+				<p>Inicio </p>
+			</a>
 		</div>
+		<hr>
+	</header>
+	<div class="card">
+		<div class="izq">
+			<img class="login" src="https://image.freepik.com/vector-gratis/sigueme-diseno-tematica-social-empresarial_24877-50426.jpg">
 		</div>
-		<div class="col-2">		
-			<div class="boton">
-				<a href="/">
-					<img href="/" class="img" src='https://image.flaticon.com/icons/png/512/15/15766.png'>
-				</a>
-			</div>
-			<img src=https://image.freepik.com/vector-gratis/pequenos-estudiantes-que-aprenden-lecciones-linea-traves-ilustracion-plana-computadora-portatil-gente-dibujos-animados-escuchando-seminario-web-computadora-o-conferencia-universitaria-video_74855-14179.jpg>
-			
-				<div class="intro">
-
+		<div class="der">
+			<h2 class="titulo"> <%= @survey.username %> </h2>
+			<h3> <%= @career.name %> <br> </h3>
+			<p class="description"> Es la carrera  que se adecua mas a tu perfil segun los resultados de nuestro test vocacional</p>
 		</div>
-		</div>
-	</div>
+	</div>	
 </body>
