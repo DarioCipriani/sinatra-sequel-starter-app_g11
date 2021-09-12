@@ -37,6 +37,10 @@ class SurveyTest < MiniTest::Unit::TestCase
   # al ejecutar nuevamente el test nos da una excepcion ValidationFailed: username is already taken (usuario existente) y por ello 
   # comentamos este test y creamos el test siguiente para probarlo de otra forma, es decir probarlo con el 
   # assert_raises(Sequel::ValidationFailed) que es una assert que trabaja con excepciones
+  #para poder probar que nuestra validacion funciona como deberia, usamos el assert_raise para
+  #que en el caso de que se quiera crear otra encuesta asociada a un usuario que ya existe, al intentar guardar ese registro,
+  #esta operacion falle con la excepcion "ValidationFailed" de esta manera sabemos que en ningun caso se permitira crear
+  #una segunda encuesta asoiada a un usuario que ya existe.
 
 
   def test_survey_one_username
