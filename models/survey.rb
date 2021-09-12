@@ -5,5 +5,6 @@ class Survey < Sequel::Model
 	def validate
     	super
    		errors.add(:username, 'cannot be empty') if !username || username.empty?
+   		validates_unique :username
   	end
 end
