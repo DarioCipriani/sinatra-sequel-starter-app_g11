@@ -106,6 +106,12 @@ end
     erb :surveys_index
   end
 
+  #este es el get para mostrar la Busqueda
+  get "/search" do
+    @careers = Career.all
+    erb :search_index
+  end
+
    #este es el post para crear las questions
   post "/questions" do
     

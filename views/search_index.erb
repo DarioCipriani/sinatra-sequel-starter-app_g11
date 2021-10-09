@@ -306,5 +306,25 @@
   </form>
 </div>
 </div>
+ <script>
+ function savedForm() {
+    const fechaD = document.getElementById("fechaD").value;
+    const fechaH = document.getElementById("fechaH").value;
+    const carrera = document.getElementById("carrera").value;
+    const formComplete={ fechaD:fechaD , fechaH:fechaH , carrera:carrera }
+    console.log(JSON.stringify(formComplete));
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/search');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify(formComplete));
+       xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseURL);
+            window.location.href=this.responseURL;
+        }
+    }    
+}
+
 </script>
 </body>
