@@ -112,6 +112,15 @@ end
     erb :search_index
   end
 
+  #este es el get para mostrar los resultados finales
+  get '/finish_search/' do
+    @fechaD = params[:fechaD]
+    @fechaH = params[:fechaH]
+    @career  = params[:career]
+    @salida = params[:salida]
+    erb :searchP
+  end
+
   #este es el post para buscar
   post "/search" do
     result = 0
