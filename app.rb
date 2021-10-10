@@ -112,6 +112,27 @@ end
     erb :search_index
   end
 
+  #este es el post para buscar
+  post "/search" do
+    result = 0
+     data = JSON.parse request.body.read
+    @fechaD = data['fechaD']
+    @fechaH = data['fechaH']
+    carrera  = data['carrera']
+    @career = Career.find(name: carrera)
+    survey = Survey.where(career_id: @career.id)
+
+    survey.each do |p|
+      val = Date.parse(String(p.updated_at))
+        if(val > Date.parse(@fechaD) && val <= Date.parse(@fechaH)) #aqui debo comparar la fecha de actualizacion del registro con la fecha pasada como parametro
+          result = result + 1
+        end
+    end
+    @salida =  " fue elegida "+result.to_s+"  veces."
+
+    redirect to "/finish_search/?fechaD=#{@fechaD}&fechaH=#{@fechaH}&salida=#{@salida}&career=#{@career.name}" #redirige los resultados a una nueva pagina
+  end
+
    #este es el post para crear las questions
   post "/questions" do
     
