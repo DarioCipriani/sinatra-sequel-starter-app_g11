@@ -16,7 +16,7 @@
       footer{
         background: #2f5d62;
         color: #a7c4bc;
-        height: 40px;
+        height: 50px;
         margin: 0px;
         display: flex;
         justify-content: center;
@@ -28,7 +28,7 @@
       .titulo { 
         color: #5e8b7e ; 
         text-shadow: 3px 3px 6px #dfeeea;
-        font-size: 5.1vh;
+        font-size: 3.5vh;
         text-align: center;
       } 
       .titulo h1{
@@ -43,8 +43,13 @@
         align-items: center ;
         margin-top: 0px
       }
+      .img {
+        width:35px;
+        height:35px;
+        margin-right: 40px;
+      }
       .texto{
-        font-size: 5vh;
+        font-size: 4vh;
         width: 50% ;
         padding: 10px;
         margin-top: 10px ;
@@ -52,22 +57,56 @@
         text-align: center
       }
       .buttom{
-        width: 260px;
+        width: 230px;
         height: 50px;
-        border-radius: 12px;
+        border-radius: 20px;
         background: #2f5d62;
         color: #dfeeea ;
         font-size: 3vh;
       }
+      .boton{
+        display:flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+    
+    }
+    .botonera {
+       width: 80px;
+       display:flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: baseline;
+       align-text: baseline;
+       color: black;
+       text-decoration: none;
+    }
+    p{
+       margin: 0px;
+       padding: 0px;
+       text-align: center;
+    }
     </style>
+    <header>
+      <div class="boton"> 
+      <a href="/search" class="botonera">
+      <img href="/" class="img" src='https://cdn-icons-png.flaticon.com/512/59/59861.png'>
+      <p>Buscar</p>
+      </a>
+      <a href="/" class="botonera">
+        <img href="/" class="img" src='https://image.flaticon.com/icons/png/512/15/15766.png'>
+        <p>Inicio </p>
+      </a>
+    </div>
+    <hr>
+  </header>
     <title> Test vocacional</title>
     <div class="titulo">
-      <h1>¿Te gustaria hacer un test vocacional?</h1>
+      <h1>¿TE GUSTARIA HACER UN TEST VOCACIONAL?</h1>
       <hr>
     </div>
     </head>
     <body>
-      <div class="cuerpo">
+        <div class="cuerpo">
         <img src=https://image.freepik.com/vector-gratis/personas-enfocadas-que-estudian-escuela-linea_74855-5834.jpg>
         <div class="texto">
           <p>Para elegir una carrera es necesario conocer o reconocer
@@ -77,6 +116,8 @@
           <p> Para ayudarte a aclarar el panorama, te proponemos
             <strong> hacer nuestro test vocacional </strong>
           </p>
+        </br>
+        </br>
           <form action='/begin' method='POST'>
           <p >
             <input class= buttom type="submit" value="Iniciar Encuesta">
@@ -84,8 +125,12 @@
           </form>
         </div>
       </div>
+      </br>
+      </br>
+      </br>
+      </br>
       <footer>
-        <p> Analisis y Diseño de Sistemas 2021 - Dario Cipriani & Maria Jose Gabutti</p>
+        <p> Analisis y Diseño de Sistemas 2021 - Gaston Molina & Dario Cipriani & Maria Jose Gabutti</p>
       </footer>
     </body>  
   </HTML>
