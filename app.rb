@@ -48,7 +48,9 @@ class App < Sinatra::Base
     @survey.save   #guardo las respuestas del usuario
     createResponses(data['choices'],@survey.id)    
     result = {} # creo el arreglo de carreras que contendra los pesos inicializando arreglo de carreras y pesos
-    initializedResult(result)
+    for career in Career.all
+      result[career.id] = 0
+    end
     calcResult(result, @career, @survey)
     redirect to "/finish/#{@survey.id}"      #llamo a la pagina html que me muestra la carrera ganadora
   end
@@ -63,12 +65,6 @@ class App < Sinatra::Base
       survey.destroy
     end
   end
-
-def initializedResult(result)
-  for career in Career.all
-      result[career.id] = 0
-  end
-end
 
 # Por cada respuesta reviso en outcome con que carrera machea 
 # y al arreglo de carreras incremento el peso de esa carrera en 1
