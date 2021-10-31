@@ -1,10 +1,10 @@
 Sequel.migration do
   up do
     alter_table(:outcomes) do
-    add_foreign_key :choice_id, :choices, :null=>false 
+      add_foreign_key :choice_id, :choices, null: false
     end
     alter_table(:outcomes) do
-    add_foreign_key :career_id, :careers, :null=>false 
+      add_foreign_key :career_id, :careers, null: false
     end
   end
 

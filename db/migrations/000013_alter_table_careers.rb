@@ -1,5 +1,5 @@
 Sequel.migration do
- up do
+  up do
     add_column :careers, :full_description, String
   end
 

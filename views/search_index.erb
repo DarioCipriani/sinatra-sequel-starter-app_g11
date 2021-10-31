@@ -292,10 +292,10 @@
             <% end %></select>
           <br>
           Fecha Desde:
-          <input type="date" id="fechaD" name="fechaD" required>
+          <input type="date" id="fecha_d" name="fecha_d" required>
           <br>
           Fecha Hasta:
-          <input type="date" id="fechaH" name="fechaH" required>
+          <input type="date" id="fecha_h" name="fecha_h" required>
           <br>
           <br>
           <form action='/search' method='POST'>
@@ -308,10 +308,10 @@
 </div>
  <script>
  function savedForm() {
-    const fechaD = document.getElementById("fechaD").value;
-    const fechaH = document.getElementById("fechaH").value;
+    const fecha_d = document.getElementById("fecha_d").value;
+    const fecha_h = document.getElementById("fecha_h").value;
     const carrera = document.getElementById("carrera").value;
-    const formComplete={ fechaD:fechaD , fechaH:fechaH , carrera:carrera }
+    const formComplete={ fecha_d:fecha_d , fecha_h:fecha_h , carrera:carrera }
     console.log(JSON.stringify(formComplete));
 
       const xhr = new XMLHttpRequest();

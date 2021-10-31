@@ -1,9 +1,10 @@
+# carreras que estan presentes en Test Vocacional
 class Career < Sequel::Model
-	one_to_many :surveys
-	one_to_many :outcomes
-	def validate
-    	super
-   		errors.add(:name, 'cannot be empty') if !name || name.empty?
-   		validates_unique :name
-  	end
+  one_to_many :surveys
+  one_to_many :outcomes
+  def validate
+    super
+    errors.add(:name, 'cannot be empty') if !name || name.empty?
+    validates_unique :name
+  end
 end

@@ -1,13 +1,13 @@
 Sequel.migration do
   up do
     alter_table(:responses) do
-    add_foreign_key :question_id, :questions, :null=>false 
+      add_foreign_key :question_id, :questions, null: false
     end
     alter_table(:responses) do
-    add_foreign_key :choice_id, :choices, :null=>false 
+      add_foreign_key :choice_id, :choices, null: false
     end
     alter_table(:responses) do
-    add_foreign_key :survey_id, :surveys, :null=>false 
+      add_foreign_key :survey_id, :surveys, null: false
     end
   end
 
