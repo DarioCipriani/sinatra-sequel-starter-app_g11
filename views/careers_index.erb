@@ -5,12 +5,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- Add icon library -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title> Carreras </title>
 	<style>
 		body {
 			font-family: 'Roboto', sans-serif;
 			background: #ffffff;
 		}
+
 		footer{
 			background: #2f5d62;
 			color: #a7c4bc;
@@ -22,7 +25,7 @@
 		}
 		footer p{
 			margin: 0px
-		}
+		} 
 		.titulo { 
 			color: #5e8b7e ; 
 			text-shadow: 3px 3px 6px #dfeeea;
@@ -46,8 +49,10 @@
 			font-size: 3vh;
 			color: #2f5d62;
 		}
-		ul{
-			margin-left:40px
+		ol{
+		  columns: 2;
+		  -webkit-columns: 2;
+		  -moz-columns: 2;
 		}
 		li a{
 			text-decoration: none;
@@ -115,6 +120,20 @@
 		padding: 0px;
 		text-align: center;
 	  }
+/* Style buttons */
+.btn {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+  background-color: RoyalBlue;
+}
 	  
     </style>
 </head>
@@ -138,21 +157,22 @@
 			<div class="titulo">
 				<h3>Las carreras existentes son:</h3>
 			</div>
-			<ul>
+			<ol>
 				<% @careers.map do |career| %>
 					<li>
 						<a href="careers/<%=career.id%>"> <%= career.name %></a>
 						(<%= career.surveys.count.to_s %>)
 					</li>
 				<% end %>
-			</ul> 
+			</ol> 
 		</div>
 		<div class="col-2">		
 	
 			<img src=https://image.freepik.com/vector-gratis/pequenos-estudiantes-que-aprenden-lecciones-linea-traves-ilustracion-plana-computadora-portatil-gente-dibujos-animados-escuchando-seminario-web-computadora-o-conferencia-universitaria-video_74855-14179.jpg>
-			<form action='/careers' method='POST'>
+			<form action='/careers' method='POST'name="p2">
 				<input class=input type='text' name='name' placeholder= 'Nombre de la Carrera'>
-				<input class=buttom  type='submit' value='Crear'>
+				<button class="btn" onclick="this.form; return true;"><i class="fa fa-check"></i></button>
+				<button class="btn" onclick="p2.action='/careers/delete'; return true;"><i class="fa fa-trash"></i></button>
 			</form>
 		</div>
 	</div>

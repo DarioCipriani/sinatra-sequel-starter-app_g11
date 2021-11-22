@@ -6,6 +6,9 @@ gem 'puma', '4.3.3'
 gem 'rubocop', require: false
 gem 'sequel'
 gem 'sinatra', '2.0.7'
+gem 'rack-flash3'
+gem 'sinatra-redirect-with-flash'
+
 
 group :development do
   gem 'dotenv', '2.7.5'
