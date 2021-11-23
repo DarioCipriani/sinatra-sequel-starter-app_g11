@@ -1,19 +1,20 @@
+# frozen_string_literal: true
+
 require 'sinatra/base'
-require './services/SurveyService'
+require './services/survey_service'
 
+# SurveyController
 class SurveyController < Sinatra::Base
-
   configure :development, :production do
-  	set :views, './views'
-  	set :public_dir, "public"
+    set :views, './views'
+    set :public_dir, 'public'
   end
 
-    # este es el get para mostrar las surveys
+  # este es el get para mostrar las surveys
   get '/surveys' do
     @questions = Question.all
     erb :surveys_index
   end
-
 
   # cuando las preguntas fueron todas respondidas, el html
   # llama a este post para calcular el resultado final de la encuesta
@@ -47,7 +48,7 @@ class SurveyController < Sinatra::Base
     # y al arreglo de carreras incremento el peso de esa carrera en 1
     response.each do |r|
       o = Outcome.where(choice_id: r.choice_id).last
-      if(o && o.career_id)
+      if o && o.career_id
         result[o.career_id] = result[o.career_id] + 1
       end
     end
@@ -61,7 +62,6 @@ class SurveyController < Sinatra::Base
     redirect to "/finish/#{@survey.id}"
   end
 
-
   # con el id del survey ganador, obtenemos la carrera y con estos datos
   # llamamos a la ultima pagina con los datos ganadores
   get '/finish/:id' do
@@ -69,6 +69,4 @@ class SurveyController < Sinatra::Base
     @career = Career.find(id: @survey.career_id)
     erb :finish
   end
-
-
 end

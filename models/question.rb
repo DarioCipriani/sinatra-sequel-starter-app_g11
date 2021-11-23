@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Preguntas que corresponden a la encuesta
 class Question < Sequel::Model
   one_to_many :responses

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # opciones de una pregunta
 class Choice < Sequel::Model
   one_to_many :outcomes

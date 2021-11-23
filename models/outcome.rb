@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Sequel::Model.plugin :validation_helpers
 
 # relacion entre las respuestas y las carreras

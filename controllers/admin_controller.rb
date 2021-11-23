@@ -1,31 +1,32 @@
-#File: ./controllers/AdminController.rb
+# frozen_string_literal: true
+
 require 'sinatra/base'
-require './services/AdminService.rb'
+require './services/admin_service'
 require 'sinatra/redirect_with_flash'
 
+# AdminController
 class AdminController < Sinatra::Base
-
   configure :development, :production do
-  	set :views, './views'
-  	set :public_dir, 'public'
+    set :views, './views'
+    set :public_dir, 'public'
   end
-  
+
   post '/begin' do
     redirect '/surveys'
   end
 
- # este es el post para crear carrera
-  post '/careers' do    
-    AdminService.newCareer params[:name]
-    redirect back        
+  # este es el post para crear carrera
+  post '/careers' do
+    AdminService.new_career params[:name]
+    redirect back
   end
 
-   # este es el post para crear carrera
-  post '/careers/delete' do    
+  # este es el post para crear carrera
+  post '/careers/delete' do
     AdminService.delete params[:name]
-    redirect back        
+    redirect back
   end
-  
+
   # este es el get para mostrar las carreras
   get '/careers' do
     @careers = Career.all
@@ -79,7 +80,7 @@ class AdminController < Sinatra::Base
       '</ul>'
   end
 
-    # este es el post para crear las questions
+  # este es el post para crear las questions
   post '/questions' do
     question = Question.new(params[:question])
     question.save
@@ -103,5 +104,4 @@ class AdminController < Sinatra::Base
       "<li> type: #{question.type}" \
       '</ul>'
   end
-
 end

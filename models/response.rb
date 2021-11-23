@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # respuestas del usuario
 class Response < Sequel::Model
   many_to_one :surveys

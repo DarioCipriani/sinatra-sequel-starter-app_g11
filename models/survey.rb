@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # encuesta final
 class Survey < Sequel::Model
   plugin :timestamps # agrega la visibilidad de las columnas de update_at y created_at al modelo

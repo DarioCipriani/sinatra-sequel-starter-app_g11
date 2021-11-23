@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # carreras que estan presentes en Test Vocacional
 class Career < Sequel::Model
   one_to_many :surveys
